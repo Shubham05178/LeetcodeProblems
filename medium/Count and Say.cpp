@@ -3,6 +3,7 @@
 * Author - Shubham Nagaria
 * Date - 25th Nov 2021
 **/
+// 4ms
 class Solution {
 public:
     string say(string l){
@@ -26,5 +27,30 @@ public:
         for(int i =2; i <=n ; i++)
             cn[i]=say(cn[i-1]);
         return cn[n];
+    }
+};
+//0ms
+class Solution {
+public:
+    string say(string l){
+      int tmp=0;
+        string says="";
+        int len=l.size();
+        for(int i =0; i < len;i++){
+            tmp++;
+            if(i==len-1 || l[i+1]!=l[i]){
+                says+=char('0'+tmp);
+                says+=l[i];
+                tmp=0;
+            }
+        }
+        return says;
+        
+    }
+    string countAndSay(int n) {
+       string cn="1";
+        for(int i =2; i <=n ; i++)
+            cn=say(cn);
+        return cn;
     }
 };
