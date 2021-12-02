@@ -37,7 +37,7 @@ class Solution {
       return 0;
     }
 };
-// Most Optimal Method:
+// Most Optimal Method1:
 
 // O(N) time complexity and O(1) space complexity 
 class Solution {
@@ -56,5 +56,21 @@ class Solution {
       }
       return slow;
 
+    }
+};
+//Most Optimal Method2:
+//O(N) time complexity and O(1) space complexity
+class Solution {
+  public:
+    int findDuplicate(vector < int > & nums) {
+      int n = nums.size();
+      for (int i = 0; i < n; i++) {
+        int cur = abs(nums[i]);
+        if (nums[cur] < 0)
+          return cur;
+        nums[cur] *= -1;
+
+      }
+      return 0;
     }
 };
