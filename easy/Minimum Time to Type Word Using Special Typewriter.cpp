@@ -18,3 +18,16 @@ public:
     return time;
     }
 };
+
+class Solution {
+public:
+    int minTimeToType(string word) {
+        int time=word.size();
+        char prev='a';
+        for(char c:word){
+            time+=min(abs(c-prev),min(25-c+prev,25-prev+c)+1);
+            prev=c;
+        }
+    return time;
+    }
+};
