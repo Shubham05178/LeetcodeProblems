@@ -54,3 +54,30 @@ public:
     }
 };
 
+
+
+#include <ext/pb_ds/assoc_container.hpp>
+#include <ext/pb_ds/tree_policy.hpp>
+using namespace __gnu_pbds;
+  
+#define ordered_set tree<long long, null_type,less_equal<long long>, rb_tree_tag,tree_order_statistics_node_update>
+ class Solution{
+     public:
+        int reversePairs(vector<int>& ar){
+            int n =ar.size();
+            if (n <= 1) return 0;
+            ordered_set st;
+            st.insert(-ar[0]);
+            long long ans= 0;
+            for (int i=1;i<n;i++) {
+             int cnt = st.order_of_key(-2LL* ar[i]);
+             ans += cnt;
+             st.insert(-ar[i]);
+             }
+             return ans;
+        }
+ };
+
+
+
+
