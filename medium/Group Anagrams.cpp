@@ -3,7 +3,7 @@
 * Author - Shubham Nagaria
 * Date - 1st Jan 2022
 **/
-//O(Nlog N) 
+//O(N * Llog L) 
 class Solution {
 public:
     vector<vector<string>> groupAnagrams(vector<string>& strs) {    
@@ -21,7 +21,7 @@ public:
     }
 };
 
-//O(N) sorting because of count sort
+//O(N* L) sorting because of count sort
 class Solution {
 public:
     string countSort(string s){
