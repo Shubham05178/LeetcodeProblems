@@ -1,0 +1,18 @@
+/**
+* Leetcode Problem - https://leetcode.com/contest/weekly-contest-277/problems/count-elements-with-strictly-smaller-and-greater-elements/
+* Author - Shubham Nagaria
+* Date - 27th Jan 2022
+
+**/
+class Solution {
+public:
+    int countElements(vector<int>& nums) {
+        int c=0, M = INT_MIN, m = INT_MAX;
+        for(int i : nums)
+            M = max(M, i), m = min( m,i);
+        for(int i : nums)
+            if(i>m && i< M) c++;
+        return c;
+    }   
+};
+
