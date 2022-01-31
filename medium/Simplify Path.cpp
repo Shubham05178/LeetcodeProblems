@@ -30,3 +30,35 @@ public:
         return s=="" ? "/" : s;
     }
 };
+
+
+
+
+
+
+class Solution {
+public:
+    string simplifyPath(string path) {
+        path.push_back('/');
+        vector<string>p;
+        string name;
+        for(char c: path){
+            if ( c == '/') {
+               if(name.size() == 0) continue; 
+               if(name == ".."){
+                   if(p.size() > 0)
+                       p.pop_back();
+               }
+               else if(name != ".")
+                 p.push_back(name);
+               name.clear();
+              }
+              else name.push_back(c);
+        }
+        string res;
+        if(p.size()==0) return "/";
+        for(int i =0; i < p.size();i++)
+            res.append("/"+ p[i]);
+        return res;
+    }
+};
