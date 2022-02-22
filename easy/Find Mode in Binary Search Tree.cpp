@@ -35,3 +35,59 @@ public:
         return res;
     }
 };
+
+
+
+
+class Solution {
+public:
+    vector<int> findMode(TreeNode* root) {
+        vector<int>res;
+        if(root==NULL) return res;
+        int count = 0;
+        int maxcount =INT_MIN;
+        TreeNode* curr = root,*temp;
+        int p=INT_MIN,c=INT_MIN;
+        while(curr!=NULL){
+            if(curr->left== NULL){
+                    p=c;
+                    c=curr->val;
+                    if(p!=c) count=1;
+                    else count++;
+                    if(count>maxcount){
+                        res.clear();
+                        res.push_back(c); 
+                        maxcount=count;
+                    }
+                    else if(count==maxcount)
+                        res.push_back(c);
+                    curr=curr->right;
+            }
+            else{
+                temp= curr->left;
+                while(temp->right!=NULL && temp->right!=curr)
+                    temp=temp->right;
+                if(temp->right == NULL){
+                    temp->right = curr;
+                    curr=curr->left; 
+                }
+                else{
+                    temp->right = NULL;
+                    p=c;
+                    c=curr->val;
+                    if(p!=c) count=1;
+                    else count++;
+                    if(count>maxcount){
+                        res.clear();
+                        res.push_back(c);
+                        maxcount=count;
+                    }
+                    else if(count==maxcount)
+                        res.push_back(c);
+                    curr=curr->right;
+                }
+            }
+        }
+        return res;
+    }
+};
