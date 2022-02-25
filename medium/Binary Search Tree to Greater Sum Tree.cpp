@@ -34,3 +34,37 @@ public:
         return root;
     }
 };
+
+
+
+
+class Solution {
+public:
+    TreeNode* bstToGst(TreeNode* root) {
+       TreeNode *curr = root ,*temp;
+        int x=0;
+        while(curr){
+            if(!curr->right){
+                curr->val += x;
+                x = curr->val;
+                curr = curr->left;
+            }
+            else{
+                temp = curr->right;
+                while(temp->left!= NULL && temp->left!=curr)
+                    temp = temp->left;
+                if(!temp->left){
+                    temp->left = curr;
+                    curr = curr->right;
+                }
+                else{
+                    temp->left = NULL;
+                    curr->val +=x;
+                    x = curr->val;
+                    curr= curr->left;
+                }
+            }
+        }
+        return root;
+    }
+};
