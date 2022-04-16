@@ -7,6 +7,9 @@ class Solution {
 public:
     bool hasAlternatingBits(int n) {
         int p=2;
+        
+        
+        
         while(n){
             if(n&1==1){ 
                 if(p!=2 && p!=0) return false;
