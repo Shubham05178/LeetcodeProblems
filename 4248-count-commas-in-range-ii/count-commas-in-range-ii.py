@@ -1,8 +1,4 @@
 class Solution:
     def countCommas(self, n: int) -> int:
-        p = 1000
-        res = 0
-        while p <= n:
-            res += n - p + 1
-            p *= 1000
-        return res
+        return sum(max((n-(10**i-1)),0) for i in range(3,16,3))
+        
